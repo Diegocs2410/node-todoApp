@@ -1,7 +1,6 @@
 {
   "name": "backend",
   "packageManager": "yarn@3.4.1",
-  "type": "module",
   "scripts": {
     "dev": "nodemon app.js"
   },
