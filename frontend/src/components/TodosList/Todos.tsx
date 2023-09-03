@@ -6,9 +6,9 @@ const Todos = async () => {
   const todos = await getTodos();
 
   return (
-    <main>
+    <>
       <TodosList todos={todos} />
-    </main>
+    </>
   );
 };
 
