@@ -23,10 +23,6 @@ todoRouter.getTodo = async (req, res) => {
 };
 
 todoRouter.createTodo = async (req, res) => {
-  console.log(
-    "🚀 ~ file: todo.js:26 ~ todoRouter.createTodo= ~ req:",
-    req.body
-  );
   const { title, description } = req.body;
   try {
     const todo = new TodoSchema({ title, description });

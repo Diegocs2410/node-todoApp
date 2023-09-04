@@ -1,38 +1,34 @@
 "use client";
-import { TODOS_URL } from "@/constants";
+import todosApi from "@/axios";
+import { TODOS_INITIAL_STATE, TODOS_URL } from "@/constants";
 import React, { useState } from "react";
 
 const TodoCreate = () => {
-  const [todoData, setTodoData] = useState({
-    title: "",
-    description: "",
-  });
+  const [todoData, setTodoData] = useState(TODOS_INITIAL_STATE);
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const { title, description } = todoData;
     try {
-      const res = await fetch(TODOS_URL, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          title,
-          description,
-        }),
+      await todosApi.post(TODOS_URL, {
+        title,
+        description,
       });
-      console.log(res);
+      setTodoData({
+        title: "",
+        description: "",
+      });
+      setTodoData(TODOS_INITIAL_STATE);
     } catch (error) {
       console.log(error);
     }
   };
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
+  const handleChange = ({
+    target,
+  }: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setTodoData({
       ...todoData,
-      [e.target.name]: e.target.value,
+      [target.name]: target.value,
     });
   };
 
@@ -48,6 +44,7 @@ const TodoCreate = () => {
             name="title"
             id="title"
             onChange={handleChange}
+            value={todoData.title}
           />
         </div>
         <div className="mb-3 flex flex-col">
@@ -57,6 +54,7 @@ const TodoCreate = () => {
             className="ml-3 p-2 text-gray-500 font-sans rounded-sm"
             name="description"
             id="description"
+            value={todoData.description}
           />
         </div>
         <button
