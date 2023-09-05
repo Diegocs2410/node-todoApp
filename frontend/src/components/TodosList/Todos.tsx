@@ -8,7 +8,12 @@ const Todos = async () => {
 
   return (
     <>
-      <Link href="/new">Create Todo</Link>
+      <Link
+        href="/new"
+        className="bg-gray-100 hover:scale-95 inline-block font-semibold text-slate-800 text-lg p-2 mb-4 rounded-lg hover:bg-gray-300 transition-all duration-300"
+      >
+        Create Todo
+      </Link>
       <TodosList todos={todos} />
     </>
   );

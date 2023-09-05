@@ -1,4 +1,3 @@
-import { TodoCreate } from "@/app/new";
 import { Todos } from "@/components/TodosList";
 
 export default function Home() {

@@ -1,4 +1,4 @@
-export interface Todo {
+export interface ITodo {
   _id: string;
   title: string;
   description: string;
@@ -8,5 +8,5 @@ export interface Todo {
 }
 
 export interface ITodosListProps {
-  todos: Todo[];
+  todos: ITodo[];
 }

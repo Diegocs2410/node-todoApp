@@ -1,20 +1,12 @@
 import { ITodosListProps } from "@/types";
-import Link from "next/link";
 import React from "react";
+import CardTodo from "../CardTodo";
 
 const TodosList = ({ todos }: ITodosListProps) => {
   return (
-    <div className="flex justify-between max-w-lg items-center w-full mx-auto gap-4 flex-wrap">
+    <div className="grid gap-2 grid-cols-3 max-w-7xl mx-auto lg:grid-cols-4">
       {todos?.map((todo) => (
-        <Link
-          href={`/todos/${todo._id}`}
-          key={todo._id}
-          className="bg-gray-500 text-slate-200 p-4 hover:bg-slate-600 transition-all duration-300 rounded-lg "
-        >
-          <h3>{todo.title}</h3>
-          <p>{todo.description}</p>
-          <p>{new Date(todo.created_at).toLocaleDateString()}</p>
-        </Link>
+        <CardTodo todo={todo} key={todo._id} />
       ))}
     </div>
   );

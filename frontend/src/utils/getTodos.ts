@@ -1,7 +1,7 @@
 import { TODOS_URL } from "@/constants";
-import { Todo } from "@/types";
+import { ITodo } from "@/types";
 
-export const getTodos = async (): Promise<Todo[]> => {
+export const getTodos = async (): Promise<ITodo[]> => {
   const response = await fetch(TODOS_URL, {
     next: {
       revalidate: 1000,
